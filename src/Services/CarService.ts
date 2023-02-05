@@ -46,4 +46,12 @@ export default class CarService {
       doorsQty: carId.doorsQty,
       seatsQty: carId.seatsQty };
   }
+
+  public async updateCar(id: string, updatedCar: ICar) {
+    const carODM = new CarODM();
+    const newCar = await carODM.updateCar(id, updatedCar);
+
+    if (!newCar) return null;
+    return { id, ...updatedCar };
+  }
 }
