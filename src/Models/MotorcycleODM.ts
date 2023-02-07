@@ -21,4 +21,12 @@ export default class MotorcycleODM {
   public async create(Motorcycle: IMotorcycle): Promise<IMotorcycle> {
     return this.model.create({ ...Motorcycle });
   }
+
+  public async getAll() {
+    return this.model.find();
+  }
+
+  public async getById(id: string) {
+    return this.model.findById(id).exec();
+  }
 }

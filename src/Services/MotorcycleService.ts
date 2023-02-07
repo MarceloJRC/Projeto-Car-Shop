@@ -18,4 +18,32 @@ export default class MotorcycleService {
       category: newMotorcycle.category,
     });
   }
+
+  public async getAll() {
+    const motorcycleODM = new MotorcycleODM();
+    const motorcycleList = await motorcycleODM.getAll();
+    return motorcycleList.map((motorcycle) => ({ id: motorcycle._id,
+      model: motorcycle.model,
+      year: motorcycle.year,
+      color: motorcycle.color,
+      status: motorcycle.status,
+      buyValue: motorcycle.buyValue,
+      category: motorcycle.category,
+      engineCapacity: motorcycle.engineCapacity }));
+  }
+
+  public async getById(id: string) {
+    const motorcycleODM = new MotorcycleODM();
+    const motorcycleId = await motorcycleODM.getById(id);
+    if (!motorcycleId) return null;
+    return {
+      id: motorcycleId._id,
+      model: motorcycleId.model,
+      year: motorcycleId.year,
+      color: motorcycleId.color,
+      status: motorcycleId.status,
+      buyValue: motorcycleId.buyValue,
+      category: motorcycleId.category,
+      engineCapacity: motorcycleId.engineCapacity };
+  }
 }
