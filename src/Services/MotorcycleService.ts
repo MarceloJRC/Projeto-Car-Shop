@@ -46,4 +46,12 @@ export default class MotorcycleService {
       category: motorcycleId.category,
       engineCapacity: motorcycleId.engineCapacity };
   }
+
+  public async updateMotorcycle(id: string, updatedMotorcycle: IMotorcycle) {
+    const motorcycleODM = new MotorcycleODM();
+    const newMotorcycle = await motorcycleODM.updateMotorcycle(id, updatedMotorcycle);
+
+    if (!newMotorcycle) return null;
+    return { id, ...updatedMotorcycle };
+  }
 }
