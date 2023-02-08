@@ -5,7 +5,7 @@ import ICar from '../../../src/Interfaces/ICar';
 import CarService from '../../../src/Services/CarService';
 
 describe('Verificar rota /cars', function () {
-  describe('POST Car', function () {
+  describe('POST /cars', function () {
     it('POST /cars', async function () {
       const carInput: ICar = {
         model: 'Marea',
@@ -37,7 +37,7 @@ describe('Verificar rota /cars', function () {
     });
   });
 
-  describe('Verificar GET cars', function () {
+  describe('Verificar GET /cars', function () {
     it('GET /cars', async function () {
       const carOutput = [
         {
@@ -94,7 +94,7 @@ describe('Verificar rota /cars', function () {
     });
   });
 
-  describe('Verificar GET cars:id', function () {
+  describe('Verificar GET /cars/:id', function () {
     it('GET /cars/:id', async function () {
       const carOutput = {
         _id: '634852326b35b59438fbea2f',
@@ -126,7 +126,7 @@ describe('Verificar rota /cars', function () {
       expect(result).to.be.deep.equal(serviceOutput);
     });
 
-    it('com id inexistente', async function () {  
+    it('GET /cars/:id inexistente', async function () {  
       sinon.stub(Model, 'findById').resolves([]);
 
       const service = new CarService();
@@ -156,7 +156,7 @@ describe('Verificar rota /cars', function () {
       expect(result).to.be.deep.equal(null);
     });
   });
-  
+
   afterEach(function () {
     sinon.restore();
   });

@@ -5,7 +5,7 @@ import IMotorcycle from '../../../src/Interfaces/IMotorcycle';
 import MotorcycleService from '../../../src/Services/MotorcycleService';
 
 describe('Verificar rota /motorcycles', function () {
-  describe('POST /Motorcycle', function () {
+  describe('POST /Motorcycles', function () {
     it('POST /motorcycles', async function () {
       const motorcycleInput: IMotorcycle = {
         model: 'Hornet',
@@ -37,7 +37,7 @@ describe('Verificar rota /motorcycles', function () {
     });
   });
 
-  describe('Verificar GET motorcycle', function () {
+  describe('Verificar GET /motorcycles', function () {
     it('GET /motorcycles', async function () {
       const motorcycleOutput = [
         {
@@ -94,7 +94,7 @@ describe('Verificar rota /motorcycles', function () {
     });
   });
 
-  describe('Verificar GET motorcycle:id', function () {
+  describe('Verificar GET /motorcycles/:id', function () {
     it('GET /motorcycles/:id', async function () {
       const motorcycleOutput = {
         _id: '634852326b35b59438fbea31',
@@ -126,7 +126,7 @@ describe('Verificar rota /motorcycles', function () {
       expect(result).to.be.deep.equal(serviceOutput);
     });
     
-    it('com id inexistente', async function () {  
+    it('GET /motorcyles/:id inexistente', async function () {  
       sinon.stub(Model, 'findById').resolves([]);
 
       const service = new MotorcycleService();
